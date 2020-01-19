@@ -5,20 +5,20 @@ sidebarDepth: 0
 # Overview
 
 ::: warning
-This documentation is for `@vue/cli`. For the old `vue-cli`, see [here](https://github.com/vuejs/vue-cli/tree/v2#vue-cli--).
+このドキュメントは `@vue/cli` のものです。古い `vue-cli` については、 [こちら](https://github.com/vuejs/vue-cli/tree/v2#vue-cli--) をご覧ください。
 :::
 
-Vue CLI is a full system for rapid Vue.js development, providing:
+Vue CLI は、迅速な Vue.js 開発のためのフルシステムであり、以下を提供します。
 
-- Interactive project scaffolding via `@vue/cli`.
-- Zero config rapid prototyping via `@vue/cli` + `@vue/cli-service-global`.
-- A runtime dependency (`@vue/cli-service`) that is:
-  - Upgradeable;
-  - Built on top of webpack, with sensible defaults;
-  - Configurable via in-project config file;
-  - Extensible via plugins
-- A rich collection of official plugins integrating the best tools in the frontend ecosystem.
-- A full graphical user interface to create and manage Vue.js projects.
+- `@vue/cli` からインタラクティブなプロジェクト生成を行います。
+- `@vue/cli` + `@vue/cli-service-global` からゼロコンフィグでラピッドプロトタイピングを実行します。
+- ランタイム( `@vue/cli-service` ) の依存関係
+  - アップグレード可能です。
+  - 実用的なデフォルト設定を備えた webpack の上に構築されます。
+  - プロジェクト内の設定ファイルで設定します。
+  - プラグイン経由で拡張可能です。
+- フロントエンドエコシステムで最高のツールを統合する公式プラグインが豊富に集約されています。
+- Vue.js プロジェクトを作成および管理するための完全なグラフィカルユーザーインターフェイスがあります。
 
 Vue CLI aims to be the standard tooling baseline for the Vue ecosystem. It ensures the various build tools work smoothly together with sensible defaults so you can focus on writing your app instead of spending days wrangling with configurations. At the same time, it still offers the flexibility to tweak the config of each tool without the need for ejecting.
 
