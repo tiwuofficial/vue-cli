@@ -1,8 +1,12 @@
 # Modes and Environment Variables
+# モードと環境変数
 
 ## Modes
+## モード
 
 **Mode** is an important concept in Vue CLI projects. By default, there are three modes:
+
+**モード** は Vue CLI プロジェクトで重要な概念です。デフォルトでは3つのモードがあります。:
 
 - `development` is used by `vue-cli-service serve`
 - `test` is used by `vue-cli-service test:unit`
