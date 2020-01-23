@@ -22,13 +22,13 @@ Vue CLI は、迅速な Vue.js 開発のためのフルシステムであり、�
 
 Vue CLI は、Vue エコシステムの標準的なベースラインツールを目指しています。 これにより、さまざまなビルドツールが適切なデフォルトとスムーズに連携して動作するようになり、構成に悩むことなく、アプリの開発に集中できます。 同時に、イジェクトする必要なしに各ツールの構成を変更できる柔軟性を提供します。
 
-## Components of the System
+## システム構成
 
-There are several moving parts of Vue CLI - if you look at the [source code](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue), you will find that it is a monorepo containing a number of separately published packages.
+Vue CLI にはいくつかの未確定要素があります。[ソースコード](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue)を見ると、個別に公開された多数のパッケージを含むモノレポであることが分かります。
 
 ### CLI
 
-The CLI (`@vue/cli`) is a globally installed npm package and provides the `vue` command in your terminal. It provides the ability to quickly scaffold a new project via `vue create`, or instantly prototype new ideas via `vue serve`. You can also manage your projects using a graphical user interface via `vue ui`. We will walk through what it can do in the next few sections of the guide.
+CLI (`@vue/cli`) はグローバルにインストールされた npm パッケージであり、ターミナルで `vue` コマンドを提供します。`vue create` は新しいプロジェクトを迅速に構築する機能、また `vue serve` は即座に新しいアイデアをプロトタイプ化する機能を提供します。`vue ui` はグラフィカルユーザーインターフェイスを使用してプロジェクトを管理することもできます。このガイドのいくつかのセクションで出来ることを説明します。
 
 ### CLI Service
 
