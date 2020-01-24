@@ -30,9 +30,9 @@ Vue CLI にはいくつかの未確定要素があります。[ソースコー�
 
 CLI (`@vue/cli`) はグローバルにインストールされた npm パッケージであり、ターミナルで `vue` コマンドを提供します。`vue create` は新しいプロジェクトを迅速に構築する機能、また `vue serve` は即座に新しいアイデアをプロトタイプ化する機能を提供します。`vue ui` はグラフィカルユーザーインターフェイスを使用してプロジェクトを管理することもできます。このガイドのいくつかのセクションで出来ることを説明します。
 
-### CLI Service
+### CLI サービス
 
-The CLI Service (`@vue/cli-service`) is a development dependency. It's an npm package installed locally into every project created by `@vue/cli`.
+CLI サービス (`@vue/cli-service`) は開発に依存するパッケージです。これは、`@vue/cli` によって作成された全てのプロジェクトにローカルインストールされる npm パッケージです。
 
 The CLI Service is built on top of [webpack](http://webpack.js.org/) and [webpack-dev-server](https://github.com/webpack/webpack-dev-server). It contains:
 
