@@ -1,24 +1,20 @@
-# Modes and Environment Variables
 # モードと環境変数
 
-## Modes
 ## モード
 
-**Mode** is an important concept in Vue CLI projects. By default, there are three modes:
+**モード** は Vue CLI プロジェクトで重要な概念です。デフォルトでは3つのモードがあります:
 
-**モード** は Vue CLI プロジェクトで重要な概念です。デフォルトでは3つのモードがあります。:
+- `development` は `vue-cli-service serve` によって使用されます
+- `test` は `vue-cli-service test:unit` によって使用されます
+- `production` は `vue-cli-service build` と `vue-cli-service test:e2e` によって使用されます
 
-- `development` is used by `vue-cli-service serve`
-- `test` is used by `vue-cli-service test:unit`
-- `production` is used by `vue-cli-service build` and `vue-cli-service test:e2e`
-
-You can overwrite the default mode used for a command by passing the `--mode` option flag. For example, if you want to use development variables in the build command:
+`--mode` オプションフラグを渡すことで、コマンドで使用されるデフォルトのモードを上書きできます。例えば、 ビルドコマンドで development モードを利用したい場合:
 
 ```
 vue-cli-service build --mode development
 ```
 
-When running `vue-cli-service`, environment variables are loaded from all [corresponding files](#environment-variables). If they don't contain a `NODE_ENV` variable, it will be set accordingly. For example, `NODE_ENV` will be set to `"production"` in production mode, `"test"` in test mode, and defaults to `"development"` otherwise.
+`vue-cli-service` を実行すると、環境変数は全ての [モードに対応するファイル](#environment-variables) から環境変数が読み込まれます。それらに `NODE_ENV` 変数が含まれていない場合、モードに応じて設定されます。例えば、 production モードでは `"production"` に設定され、 test モードでは `"test"` に設定され、それ以外の場合はデフォルトで `"development"` に設定されます。
 
 Then `NODE_ENV` will determine the primary mode your app is running in - development, production or test - and consequently, what kind of webpack config will be created.
 
@@ -29,7 +25,7 @@ Similarly, `NODE_ENV=development` creates a webpack configuration which enables 
 When you are running `vue-cli-service build`, your `NODE_ENV` should always be set to "production" to obtain an app ready for deployment, regardless of the environment you're deploying to.
 
 ::: warning NODE_ENV
-If you have a default `NODE_ENV` in your environment, you should either remove it or explicitly set `NODE_ENV` when running `vue-cli-service` commands.
+あなたの実行環境にデフォルトの `NODE_ENV` がある場合は、それを削除するか、` vue-cli-service` コマンドの実行時に `NODE_ENV` を明示的に設定する必要があります。
 :::
 
 ## Environment Variables
