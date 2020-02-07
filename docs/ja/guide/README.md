@@ -5,44 +5,44 @@ sidebarDepth: 0
 # Overview
 
 ::: warning
-This documentation is for `@vue/cli`. For the old `vue-cli`, see [here](https://github.com/vuejs/vue-cli/tree/v2#vue-cli--).
+このドキュメントは `@vue/cli` のものです。古い `vue-cli` については、 [こちら](https://github.com/vuejs/vue-cli/tree/v2#vue-cli--) をご覧ください。
 :::
 
-Vue CLI is a full system for rapid Vue.js development, providing:
+Vue CLI は、迅速な Vue.js 開発のためのフルシステムであり、以下を提供します。
 
-- Interactive project scaffolding via `@vue/cli`.
-- Zero config rapid prototyping via `@vue/cli` + `@vue/cli-service-global`.
-- A runtime dependency (`@vue/cli-service`) that is:
-  - Upgradeable;
-  - Built on top of webpack, with sensible defaults;
-  - Configurable via in-project config file;
-  - Extensible via plugins
-- A rich collection of official plugins integrating the best tools in the frontend ecosystem.
-- A full graphical user interface to create and manage Vue.js projects.
+- `@vue/cli` からインタラクティブなプロジェクト生成を行います。
+- `@vue/cli` + `@vue/cli-service-global` からゼロコンフィグでラピッドプロトタイピングを実行します。
+- ランタイム( `@vue/cli-service` ) の依存関係
+  - アップグレード可能です。
+  - 実用的なデフォルト設定を備えた webpack の上に構築されます。
+  - プロジェクト内の設定ファイルで設定します。
+  - プラグイン経由で拡張可能です。
+- フロントエンドエコシステムで最高のツールを統合する公式プラグインが豊富に集約されています。
+- Vue.js プロジェクトを作成および管理するための完全なグラフィカルユーザーインターフェイスがあります。
 
-Vue CLI aims to be the standard tooling baseline for the Vue ecosystem. It ensures the various build tools work smoothly together with sensible defaults so you can focus on writing your app instead of spending days wrangling with configurations. At the same time, it still offers the flexibility to tweak the config of each tool without the need for ejecting.
+Vue CLI は、Vue エコシステムの標準的なベースラインツールを目指しています。 これにより、さまざまなビルドツールが適切なデフォルトとスムーズに連携して動作するようになり、構成に悩むことなく、アプリの開発に集中できます。 同時に、イジェクトする必要なしに各ツールの構成を変更できる柔軟性を提供します。
 
-## Components of the System
+## システム構成
 
-There are several moving parts of Vue CLI - if you look at the [source code](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue), you will find that it is a monorepo containing a number of separately published packages.
+Vue CLI にはいくつかの未確定要素があります。[ソースコード](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue)を見ると、個別に公開された多数のパッケージを含むモノレポであることが分かります。
 
 ### CLI
 
-The CLI (`@vue/cli`) is a globally installed npm package and provides the `vue` command in your terminal. It provides the ability to quickly scaffold a new project via `vue create`, or instantly prototype new ideas via `vue serve`. You can also manage your projects using a graphical user interface via `vue ui`. We will walk through what it can do in the next few sections of the guide.
+CLI (`@vue/cli`) はグローバルにインストールされた npm パッケージであり、ターミナルで `vue` コマンドを提供します。`vue create` は新しいプロジェクトを迅速に構築する機能、また `vue serve` は即座に新しいアイデアをプロトタイプ化する機能を提供します。`vue ui` はグラフィカルユーザーインターフェイスを使用してプロジェクトを管理することもできます。このガイドのいくつかのセクションで出来ることを説明します。
 
-### CLI Service
+### CLI サービス
 
-The CLI Service (`@vue/cli-service`) is a development dependency. It's an npm package installed locally into every project created by `@vue/cli`.
+CLI サービス (`@vue/cli-service`) は開発に依存するパッケージです。これは、`@vue/cli` によって作成された全てのプロジェクトにローカルインストールされる npm パッケージです。
 
-The CLI Service is built on top of [webpack](http://webpack.js.org/) and [webpack-dev-server](https://github.com/webpack/webpack-dev-server). It contains:
+CLI サービスは、[webpack](http://webpack.js.org/) および [webpack-dev-server](https://github.com/webpack/webpack-dev-server) の上に構築されます。それは、以下を含みます：
 
-- The core service that loads other CLI Plugins;
-- An internal webpack config that is optimized for most apps;
-- The `vue-cli-service` binary inside the project, which comes with the basic `serve`, `build` and `inspect` commands.
+- 他の CLI プラグインをロードするコアサービスです。
+- ほとんどのアプリ用に最適化された webpack を内部に構成します。
+- プロジェクト内の `vue-cli-service` バイナリには、基本的な `serve`、`build`、および `inspect` コマンドが付属しています。
 
-If you are familiar with [create-react-app](https://github.com/facebookincubator/create-react-app), `@vue/cli-service` is roughly the equivalent of `react-scripts`, although the feature set is different.
+[create-react-app](https://github.com/facebookincubator/create-react-app) に精通している場合、`@vue/cli-service` は `react-scripts` とほぼ同等ですが、機能セットが異なります。
 
-The section on [CLI Service](./cli-service.md) covers its detailed usage.
+[CLI サービス](./cli-service.md)のセクションでは、その詳細な使用法を説明しています。
 
 ### CLI Plugins
 
