@@ -16,16 +16,16 @@ vue-cli-service build --mode development
 
 `vue-cli-service` を実行すると、環境変数は全ての [モードに対応するファイル](#environment-variables) から環境変数が読み込まれます。それらに `NODE_ENV` 変数が含まれていない場合、モードに応じて設定されます。例えば、 production モードでは `"production"` に設定され、 test モードでは `"test"` に設定され、それ以外の場合はデフォルトで `"development"` に設定されます。
 
-Then `NODE_ENV` will determine the primary mode your app is running in - development, production or test - and consequently, what kind of webpack config will be created.
+次に、 `NODE_ENV` は実行されているアプリのモード（ development , production もしくは test ）を決定し、その結果、どの種類の webpack 設定が作成されるかを決定します。
 
-With `NODE_ENV` set to "test" for example, Vue CLI creates a webpack config that is intended to be used and optimized for unit tests. It doesn't process images and other assets that are unnecessary for unit tests.
+例えば、 `NODE_ENV` が「 test 」に設定されている場合、  Vue CLI は、単体テスト用に使用および最適化することを目的とした webpack 設定を作成します。
 
-Similarly, `NODE_ENV=development` creates a webpack configuration which enables HMR, doesn't hash assets or create vendor bundles in order to allow for fast re-builds when running a dev server.
+同様に、 `NODE_ENV=development` は、HMR を有効にした webpack 設定を作成し、開発サーバーの実行時に高速に再ビルドを可能にするために、アセットのハッシュ化や vendor のバンドルを作成したりしません。
 
-When you are running `vue-cli-service build`, your `NODE_ENV` should always be set to "production" to obtain an app ready for deployment, regardless of the environment you're deploying to.
+`vue-cli-service build` を実行しているとき、デプロイ先の環境にかかわらず、デプロイ可能なアプリを取得するために、 `NODE_ENV` を常に「 production 」に設定すべきです。
 
 ::: warning NODE_ENV
-あなたの実行環境にデフォルトの `NODE_ENV` がある場合は、それを削除するか、` vue-cli-service` コマンドの実行時に `NODE_ENV` を明示的に設定する必要があります。
+実行環境にデフォルトの `NODE_ENV` がある場合は、それを削除するか、 `vue-cli-service` コマンドの実行時に `NODE_ENV` を明示的に設定する必要があります。
 :::
 
 ## Environment Variables
