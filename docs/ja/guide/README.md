@@ -34,15 +34,15 @@ CLI (`@vue/cli`) はグローバルにインストールされた npm パッケ�
 
 CLI サービス (`@vue/cli-service`) は開発に依存するパッケージです。これは、`@vue/cli` によって作成された全てのプロジェクトにローカルインストールされる npm パッケージです。
 
-The CLI Service is built on top of [webpack](http://webpack.js.org/) and [webpack-dev-server](https://github.com/webpack/webpack-dev-server). It contains:
+CLI サービスは、[webpack](http://webpack.js.org/) および [webpack-dev-server](https://github.com/webpack/webpack-dev-server) の上に構築されます。それは、以下を含みます：
 
-- The core service that loads other CLI Plugins;
-- An internal webpack config that is optimized for most apps;
-- The `vue-cli-service` binary inside the project, which comes with the basic `serve`, `build` and `inspect` commands.
+- 他の CLI プラグインをロードするコアサービスです。
+- ほとんどのアプリ用に最適化された webpack を内部に構成します。
+- プロジェクト内の `vue-cli-service` バイナリには、基本的な `serve`、`build`、および `inspect` コマンドが付属しています。
 
-If you are familiar with [create-react-app](https://github.com/facebookincubator/create-react-app), `@vue/cli-service` is roughly the equivalent of `react-scripts`, although the feature set is different.
+[create-react-app](https://github.com/facebookincubator/create-react-app) に精通している場合、`@vue/cli-service` は `react-scripts` とほぼ同等ですが、機能セットが異なります。
 
-The section on [CLI Service](./cli-service.md) covers its detailed usage.
+[CLI サービス](./cli-service.md)のセクションでは、その詳細な使用法を説明しています。
 
 ### CLI Plugins
 
