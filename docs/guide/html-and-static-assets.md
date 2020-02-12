@@ -1,18 +1,18 @@
-# HTML and Static Assets
+# HTML と 静的アセット
 
 ## HTML
 
-### The Index File
+### Index ファイル
 
-The file `public/index.html` is a template that will be processed with [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin). During build, asset links will be injected automatically. In addition, Vue CLI also automatically injects resource hints (`preload/prefetch`), manifest/icon links (when PWA plugin is used), and the asset links for the JavaScript and CSS files produced during the build.
+`public/index.html` は [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) で処理されるテンプレートです。ビルド中、 アセットへのリンクは自動的に注入されます。さらに、Vue CLI は リソースヒント (`preload/prefetch`)、manifest/icon リンク (PWA プラグインが使われている場合)、ビルド中に生成された Javascript ファイルと CSS ファイル へのアセットリンクも自動的に注入します。
 
-### Interpolation
+### 補足
 
-Since the index file is used as a template, you can use the [lodash template](https://lodash.com/docs/4.17.10#template) syntax to interpolate values in it:
+index ファイルをテンプレートのように利用する場合、[lodash template](https://lodash.com/docs/4.17.10#template) のシンタックスを利用して、値をバインドすることができます。
 
-- `<%= VALUE %>` for unescaped interpolation;
-- `<%- VALUE %>` for HTML-escaped interpolation;
-- `<% expression %>` for JavaScript control flows.
+- `<%= VALUE %>` エスケープせずにバインディング
+- `<%- VALUE %>` HTML エスケープしてバインディング
+- `<% expression %>` JavaScript 制御フロー
 
 In addition to the [default values exposed by `html-webpack-plugin`](https://github.com/jantimon/html-webpack-plugin#writing-your-own-templates), all [client-side env variables](./mode-and-env.md#using-env-variables-in-client-side-code) are also available directly. For example, to use the `BASE_URL` value:
 
