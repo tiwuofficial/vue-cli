@@ -28,37 +28,37 @@ vue-cli-service build --mode development
 実行環境にデフォルトの `NODE_ENV` がある場合は、それを削除するか、 `vue-cli-service` コマンドの実行時に `NODE_ENV` を明示的に設定する必要があります。
 :::
 
-## Environment Variables
+## 環境変数
 
-You can specify env variables by placing the following files in your project root:
+プロジェクトルートに以下のファイルを配置することで、環境変数を指定できます。:
 
 ``` bash
-.env                # loaded in all cases
-.env.local          # loaded in all cases, ignored by git
-.env.[mode]         # only loaded in specified mode
-.env.[mode].local   # only loaded in specified mode, ignored by git
+.env                # 全ての場合に読み込まれます
+.env.local          # 全ての場合に読み込まれ、 git に無視されます
+.env.[mode]         # 指定されたモードの場合のみ読み込まれます
+.env.[mode].local   # 指定されたモードの場合のみ読み込まれ、 git に無視されます
 ```
 
-An env file simply contains key=value pairs of environment variables:
+env ファイルには、環境変数の単なる key=value ペアが含まれています。:
 
 ```
 FOO=bar
 VUE_APP_SECRET=secret
 ```
 
-Note that only variables that start with `VUE_APP_` will be statically embedded into the client bundle with `webpack.DefinePlugin`.
+`VUE_APP_` で始まる変数のみが `webpack.DefinePlugin` でクライアントのバンドルに静的に埋め込まれることに注意してください。
 
-For more detailed env parsing rules, please refer to [the documentation of `dotenv`](https://github.com/motdotla/dotenv#rules). We also use [dotenv-expand](https://github.com/motdotla/dotenv-expand) for variable expansion (available in Vue CLI 3.5+).
+より詳細な env 解析ルールについては、 [ `dotenv` のドキュメント](https://github.com/motdotla/dotenv#rules) を参照してください。また、変数展開に [dotenv-expand](https://github.com/motdotla/dotenv-expand) を使用します。（ Vue CLI 3.5 以降で使用可能）
 
-Loaded variables will become available to all `vue-cli-service` commands, plugins and dependencies.
+読み込まれた変数は、全ての `vue-cli-service` コマンド、プラグイン、依存関係で利用可能になります。
 
-::: tip Env Loading Priorities
+::: tip 環境読み込みの優先順位
 
-An env file for a specific mode (e.g. `.env.production`) will take higher priority than a generic one (e.g. `.env`).
+特定のモード（例: `.env.production` ）の env ファイルは、一般的なモード（例: ` .env` ）よりも高い優先度を持ちます。
 
-In addition, environment variables that already exist when Vue CLI is executed have the highest priority and will not be overwritten by `.env` files.
+さらに、Vue CLI の実行時に既に存在する環境変数は最も高い優先度を持ち、 `.env` ファイルによって上書きされません。
 
-`.env` files are loaded at the start of `vue-cli-service`. Restart the service after making changes.
+`.env` ファイルは `vue-cli-service` の開始時にロードされます。 変更後、サービスを再起動します。
 :::
 
 ### Example: Staging Mode
