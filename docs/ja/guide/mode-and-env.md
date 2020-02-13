@@ -61,46 +61,48 @@ VUE_APP_SECRET=secret
 `.env` ファイルは `vue-cli-service` の開始時にロードされます。 変更後、サービスを再起動します。
 :::
 
-### Example: Staging Mode
+### 例: staging モード
 
-Assuming we have an app with the following `.env` file:
+以下のような `.env` ファイルを持つアプリがあると仮定します。:
 
 ```
 VUE_APP_TITLE=My App
 ```
 
-And the following `.env.staging` file:
+さらに、以下のような `.env.staging` も持ちます。:
 
 ```
 NODE_ENV=production
 VUE_APP_TITLE=My App (staging)
 ```
 
-- `vue-cli-service build` builds a production app, loading `.env`, `.env.production` and `.env.production.local` if they are present;
+- `vue-cli-service build` は、 本番用のアプリをビルドし、 `.env` 、 `.env.production` 、 `.env.production.local` が存在する場合にこれらを読み込みます。
 
-- `vue-cli-service build --mode staging` builds a production app in staging mode, using `.env`, `.env.staging` and `.env.staging.local` if they are present.
+- `vue-cli-service build --mode staging` は、staging モードで本番アプリをビルドし、`.env` 、 `.env.staging` 、 `.env.staging.local` が存在する場合にこれらを読み込みます。
 
-In both cases, the app is built as a production app because of the `NODE_ENV`, but in the staging version, `process.env.VUE_APP_TITLE` is overwritten with a different value.
+どちらの場合にも、 `NODE_ENV` の設定により、本番用のアプリとしてビルドされますが、 staging モードでは、 `process.env.VUE_APP_TITLE` が別の値で上書きされます。
 
-### Using Env Variables in Client-side Code
+### クライアントサイドコードでの環境変数の利用
 
-You can access env variables in your application code:
+アプリケーションコードでは、 env 変数にアクセスできます。:
 
 ``` js
 console.log(process.env.VUE_APP_SECRET)
 ```
 
-During build, `process.env.VUE_APP_SECRET` will be replaced by the corresponding value. In the case of `VUE_APP_SECRET=secret`, it will be replaced by `"secret"`.
+ビルド中、 `process.env.VUE_APP_SECRET` は、対応する値に置き換えられます。 `VUE_APP_SECRET=secret` の場合、これは `"secret"` に置き換えられます。
 
-In addition to `VUE_APP_*` variables, there are also two special variables that will always be available in your app code:
+`VUE_APP_*` 変数に加えて、アプリケーションコードで利用できる2つの特別な変数も存在します。:
 
-- `NODE_ENV` - this will be one of `"development"`, `"production"` or `"test"` depending on the [mode](#modes) the app is running in.
-- `BASE_URL` - this corresponds to the `publicPath` option in `vue.config.js` and is the base path your app is deployed at.
+- `NODE_ENV` - アプリが実行されている [モード](#modes) に応じて、 `"development"` 、 `"production"` 、 `"test"` のいずれかになります。
+- `BASE_URL` - `vue.config.js` の `publicPath` オプションに対応し、アプリがデプロイされる場所のベースパスです。
 
-All resolved env variables will be available inside `public/index.html` as discussed in [HTML - Interpolation](./html-and-static-assets.md#interpolation).
+All resolved env variables will be available inside `public/index.html` as discussed in [HTML - 補間](./html-and-static-assets.md#interpolation).
+
+[HTML - 補間](./html-and-static-assets.md#interpolation) で説明されているように、全ての解決された環境変数は、 `public/index.html` 内で利用可能になります。
 
 ::: tip
-You can have computed env vars in your `vue.config.js` file. They still need to be prefixed with `VUE_APP_`. This is useful for version info
+`vue.config.js` ファイルで環境変数の演算ができます。それには、 `VUE_APP_` のプレフィックスをつける必要があります。これは、バージョン情報の設定に役立ちます。:
 
 ```js
 process.env.VUE_APP_VERSION = require('./package.json').version
