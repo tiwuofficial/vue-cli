@@ -97,8 +97,6 @@ console.log(process.env.VUE_APP_SECRET)
 - `NODE_ENV` - アプリが実行されている [モード](#modes) に応じて、 `"development"` 、 `"production"` 、 `"test"` のいずれかになります。
 - `BASE_URL` - `vue.config.js` の `publicPath` オプションに対応し、アプリがデプロイされる場所のベースパスです。
 
-All resolved env variables will be available inside `public/index.html` as discussed in [HTML - 補間](./html-and-static-assets.md#interpolation).
-
 [HTML - 補間](./html-and-static-assets.md#interpolation) で説明されているように、全ての解決された環境変数は、 `public/index.html` 内で利用可能になります。
 
 ::: tip
