@@ -1,106 +1,106 @@
-# Modes and Environment Variables
+# モードと環境変数
 
-## Modes
+## モード
 
-**Mode** is an important concept in Vue CLI projects. By default, there are three modes:
+**モード** は Vue CLI プロジェクトで重要な概念です。デフォルトでは3つのモードがあります:
 
-- `development` is used by `vue-cli-service serve`
-- `test` is used by `vue-cli-service test:unit`
-- `production` is used by `vue-cli-service build` and `vue-cli-service test:e2e`
+- `development` は `vue-cli-service serve` によって使用されます
+- `test` は `vue-cli-service test:unit` によって使用されます
+- `production` は `vue-cli-service build` と `vue-cli-service test:e2e` によって使用されます
 
-You can overwrite the default mode used for a command by passing the `--mode` option flag. For example, if you want to use development variables in the build command:
+`--mode` オプションフラグを渡すことで、コマンドで使用されるデフォルトのモードを上書きできます。例えば、 ビルドコマンドで development モードを利用したい場合:
 
 ```
 vue-cli-service build --mode development
 ```
 
-When running `vue-cli-service`, environment variables are loaded from all [corresponding files](#environment-variables). If they don't contain a `NODE_ENV` variable, it will be set accordingly. For example, `NODE_ENV` will be set to `"production"` in production mode, `"test"` in test mode, and defaults to `"development"` otherwise.
+`vue-cli-service` を実行すると、環境変数は全ての [モードに対応するファイル](#environment-variables) から環境変数が読み込まれます。それらに `NODE_ENV` 変数が含まれていない場合、モードに応じて設定されます。例えば、 production モードでは `"production"` に設定され、 test モードでは `"test"` に設定され、それ以外の場合はデフォルトで `"development"` に設定されます。
 
-Then `NODE_ENV` will determine the primary mode your app is running in - development, production or test - and consequently, what kind of webpack config will be created.
+次に、 `NODE_ENV` は実行されているアプリのモード（ development , production もしくは test ）を決定し、その結果、どの種類の webpack 設定が作成されるかを決定します。
 
-With `NODE_ENV` set to "test" for example, Vue CLI creates a webpack config that is intended to be used and optimized for unit tests. It doesn't process images and other assets that are unnecessary for unit tests.
+例えば、 `NODE_ENV` が「 test 」に設定されている場合、  Vue CLI は、単体テスト用に使用および最適化することを目的とした webpack 設定を作成します。
 
-Similarly, `NODE_ENV=development` creates a webpack configuration which enables HMR, doesn't hash assets or create vendor bundles in order to allow for fast re-builds when running a dev server.
+同様に、 `NODE_ENV=development` は、HMR を有効にした webpack 設定を作成し、開発サーバーの実行時に高速に再ビルドを可能にするために、アセットのハッシュ化や vendor のバンドルを作成したりしません。
 
-When you are running `vue-cli-service build`, your `NODE_ENV` should always be set to "production" to obtain an app ready for deployment, regardless of the environment you're deploying to.
+`vue-cli-service build` を実行しているとき、デプロイ先の環境にかかわらず、デプロイ可能なアプリを取得するために、 `NODE_ENV` を常に「 production 」に設定すべきです。
 
 ::: warning NODE_ENV
-If you have a default `NODE_ENV` in your environment, you should either remove it or explicitly set `NODE_ENV` when running `vue-cli-service` commands.
+実行環境にデフォルトの `NODE_ENV` がある場合は、それを削除するか、 `vue-cli-service` コマンドの実行時に `NODE_ENV` を明示的に設定する必要があります。
 :::
 
-## Environment Variables
+## 環境変数
 
-You can specify env variables by placing the following files in your project root:
+プロジェクトルートに以下のファイルを配置することで、環境変数を指定できます。:
 
 ``` bash
-.env                # loaded in all cases
-.env.local          # loaded in all cases, ignored by git
-.env.[mode]         # only loaded in specified mode
-.env.[mode].local   # only loaded in specified mode, ignored by git
+.env                # 全ての場合に読み込まれます
+.env.local          # 全ての場合に読み込まれ、 git に無視されます
+.env.[mode]         # 指定されたモードの場合のみ読み込まれます
+.env.[mode].local   # 指定されたモードの場合のみ読み込まれ、 git に無視されます
 ```
 
-An env file simply contains key=value pairs of environment variables:
+env ファイルには、環境変数の単なる key=value ペアが含まれています。:
 
 ```
 FOO=bar
 VUE_APP_SECRET=secret
 ```
 
-Note that only variables that start with `VUE_APP_` will be statically embedded into the client bundle with `webpack.DefinePlugin`.
+`VUE_APP_` で始まる変数のみが `webpack.DefinePlugin` でクライアントのバンドルに静的に埋め込まれることに注意してください。
 
-For more detailed env parsing rules, please refer to [the documentation of `dotenv`](https://github.com/motdotla/dotenv#rules). We also use [dotenv-expand](https://github.com/motdotla/dotenv-expand) for variable expansion (available in Vue CLI 3.5+).
+より詳細な env 解析ルールについては、 [ `dotenv` のドキュメント](https://github.com/motdotla/dotenv#rules) を参照してください。また、変数展開に [dotenv-expand](https://github.com/motdotla/dotenv-expand) を使用します。（ Vue CLI 3.5 以降で使用可能）
 
-Loaded variables will become available to all `vue-cli-service` commands, plugins and dependencies.
+読み込まれた変数は、全ての `vue-cli-service` コマンド、プラグイン、依存関係で利用可能になります。
 
-::: tip Env Loading Priorities
+::: tip 環境読み込みの優先順位
 
-An env file for a specific mode (e.g. `.env.production`) will take higher priority than a generic one (e.g. `.env`).
+特定のモード（例: `.env.production` ）の env ファイルは、一般的なモード（例: ` .env` ）よりも高い優先度を持ちます。
 
-In addition, environment variables that already exist when Vue CLI is executed have the highest priority and will not be overwritten by `.env` files.
+さらに、Vue CLI の実行時に既に存在する環境変数は最も高い優先度を持ち、 `.env` ファイルによって上書きされません。
 
-`.env` files are loaded at the start of `vue-cli-service`. Restart the service after making changes.
+`.env` ファイルは `vue-cli-service` の開始時にロードされます。 変更後、サービスを再起動します。
 :::
 
-### Example: Staging Mode
+### 例: staging モード
 
-Assuming we have an app with the following `.env` file:
+以下のような `.env` ファイルを持つアプリがあると仮定します。:
 
 ```
 VUE_APP_TITLE=My App
 ```
 
-And the following `.env.staging` file:
+さらに、以下のような `.env.staging` も持ちます。:
 
 ```
 NODE_ENV=production
 VUE_APP_TITLE=My App (staging)
 ```
 
-- `vue-cli-service build` builds a production app, loading `.env`, `.env.production` and `.env.production.local` if they are present;
+- `vue-cli-service build` は、本番用のアプリをビルドし、 `.env` 、 `.env.production` 、 `.env.production.local` が存在する場合にこれらを読み込みます。
 
-- `vue-cli-service build --mode staging` builds a production app in staging mode, using `.env`, `.env.staging` and `.env.staging.local` if they are present.
+- `vue-cli-service build --mode staging` は、staging モードで本番アプリをビルドし、`.env` 、 `.env.staging` 、 `.env.staging.local` が存在する場合にこれらを読み込みます。
 
-In both cases, the app is built as a production app because of the `NODE_ENV`, but in the staging version, `process.env.VUE_APP_TITLE` is overwritten with a different value.
+どちらの場合にも、 `NODE_ENV` の設定により、本番用のアプリとしてビルドされますが、staging モードでは、 `process.env.VUE_APP_TITLE` が別の値で上書きされます。
 
-### Using Env Variables in Client-side Code
+### クライアントサイドコードでの環境変数の利用
 
-You can access env variables in your application code:
+アプリケーションコードでは、 env 変数にアクセスできます。:
 
 ``` js
 console.log(process.env.VUE_APP_SECRET)
 ```
 
-During build, `process.env.VUE_APP_SECRET` will be replaced by the corresponding value. In the case of `VUE_APP_SECRET=secret`, it will be replaced by `"secret"`.
+ビルド中、 `process.env.VUE_APP_SECRET` は、対応する値に置き換えられます。 `VUE_APP_SECRET=secret` の場合、これは `"secret"` に置き換えられます。
 
-In addition to `VUE_APP_*` variables, there are also two special variables that will always be available in your app code:
+`VUE_APP_*` 変数に加えて、アプリケーションコードで利用できる2つの特別な変数も存在します。:
 
-- `NODE_ENV` - this will be one of `"development"`, `"production"` or `"test"` depending on the [mode](#modes) the app is running in.
-- `BASE_URL` - this corresponds to the `publicPath` option in `vue.config.js` and is the base path your app is deployed at.
+- `NODE_ENV` - アプリが実行されている [モード](#modes) に応じて、 `"development"` 、 `"production"` 、 `"test"` のいずれかになります。
+- `BASE_URL` - `vue.config.js` の `publicPath` オプションに対応し、アプリがデプロイされる場所のベースパスです。
 
-All resolved env variables will be available inside `public/index.html` as discussed in [HTML - Interpolation](./html-and-static-assets.md#interpolation).
+[HTML - 補間](./html-and-static-assets.md#interpolation) で説明されているように、全ての解決された環境変数は、 `public/index.html` 内で利用可能になります。
 
 ::: tip
-You can have computed env vars in your `vue.config.js` file. They still need to be prefixed with `VUE_APP_`. This is useful for version info
+`vue.config.js` ファイルで環境変数の演算ができます。それには、 `VUE_APP_` のプレフィックスをつける必要があります。これは、バージョン情報の設定に役立ちます。:
 
 ```js
 process.env.VUE_APP_VERSION = require('./package.json').version
@@ -111,8 +111,8 @@ module.exports = {
 ```
 :::
 
-### Local Only Variables
+### ローカルのみの変数
 
-Sometimes you might have env variables that should not be committed into the codebase, especially if your project is hosted in a public repository. In that case you should use an `.env.local` file instead. Local env files are ignored in `.gitignore` by default.
+特にプロジェクトがパブリックリポジトリにホストされている場合などに、コードベースにコミットしてはならない環境変数が存在する場合があります。その場合は、代わりに `.env.local` ファイルを使用する必要があります。デフォルトで、ローカル環境ファイルは、`.gitignore` によって無視されます。
 
-`.local` can also be appended to mode-specific env files, for example `.env.development.local` will be loaded during development, and is ignored by git.
+`.local` は、モード固有の環境変数ファイルに追加することもできます。例えば、 `.env.development.local` は、development モードで読み込まれ、git では無視されます。
