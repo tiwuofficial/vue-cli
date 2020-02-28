@@ -76,11 +76,11 @@ NODE_ENV=production
 VUE_APP_TITLE=My App (staging)
 ```
 
-- `vue-cli-service build` は、 本番用のアプリをビルドし、 `.env` 、 `.env.production` 、 `.env.production.local` が存在する場合にこれらを読み込みます。
+- `vue-cli-service build` は、本番用のアプリをビルドし、 `.env` 、 `.env.production` 、 `.env.production.local` が存在する場合にこれらを読み込みます。
 
 - `vue-cli-service build --mode staging` は、staging モードで本番アプリをビルドし、`.env` 、 `.env.staging` 、 `.env.staging.local` が存在する場合にこれらを読み込みます。
 
-どちらの場合にも、 `NODE_ENV` の設定により、本番用のアプリとしてビルドされますが、 staging モードでは、 `process.env.VUE_APP_TITLE` が別の値で上書きされます。
+どちらの場合にも、 `NODE_ENV` の設定により、本番用のアプリとしてビルドされますが、staging モードでは、 `process.env.VUE_APP_TITLE` が別の値で上書きされます。
 
 ### クライアントサイドコードでの環境変数の利用
 
@@ -111,8 +111,8 @@ module.exports = {
 ```
 :::
 
-### Local Only Variables
+### ローカルのみの変数
 
-Sometimes you might have env variables that should not be committed into the codebase, especially if your project is hosted in a public repository. In that case you should use an `.env.local` file instead. Local env files are ignored in `.gitignore` by default.
+特にプロジェクトがパブリックリポジトリにホストされている場合などに、コードベースにコミットしてはならない環境変数が存在する場合があります。その場合は、代わりに `.env.local` ファイルを使用する必要があります。デフォルトで、ローカル環境ファイルは、`.gitignore` によって無視されます。
 
-`.local` can also be appended to mode-specific env files, for example `.env.development.local` will be loaded during development, and is ignored by git.
+`.local` は、モード固有の環境変数ファイルに追加することもできます。例えば、 `.env.development.local` は、development モードで読み込まれ、git では無視されます。
